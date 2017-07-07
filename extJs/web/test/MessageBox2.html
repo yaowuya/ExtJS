@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Messagebox2</title>
+    <link rel="stylesheet" type="text/css" href="../js/ext-4.2.1.883/resources/css/ext-all.css
+">
+    <script type="text/javascript" src="../js/ext-4.2.1.883/ext-all.js"></script>
+    <script type="text/javascript" src="../js/ext-4.2.1.883/locale/ext-lang-zh_CN.js"></script>
+    <script type="text/javascript">
+        Ext.onReady(function () {
+            //'ok yes no cancel'
+            Ext.MessageBox.msgButtons[0].setText("可以OK");
+            var msgBox=Ext.MessageBox.show({
+                title:"提示",
+                msg:"动态更新文字信息",
+                modal:true,
+                buttons:Ext.Msg.OK,
+                fn:function(){
+                    Ext.TaskManager.stop(task);
+                }
+            });
+            var task={
+                run:function(){
+                    msgBox.updateText('会动的时间：'+Ext.util.Format.date(new Date(),'Y-m-d  g:i:s A'));
+                },
+                interval:1000
+            };
+            Ext.TaskManager.start(task);
+        })
+    </script>
+</head>
+<body>
+
+</body>
+</html>

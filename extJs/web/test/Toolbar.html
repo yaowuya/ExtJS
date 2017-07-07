@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Toolbar</title>
+    <link rel="stylesheet" type="text/css" href="../js/ext-4.2.1.883/resources/css/ext-all.css
+">
+    <script type="text/javascript" src="../js/ext-4.2.1.883/ext-all.js"></script>
+    <script type="text/javascript" src="../js/ext-4.2.1.883/locale/ext-lang-zh_CN.js"></script>
+    <script type="text/javascript">
+        Ext.onReady(function () {
+            var toolbar=new Ext.toolbar.Toolbar({
+                renderTo:"toolbar",
+                width:300
+            });
+            toolbar.add([
+                {
+                    text:'新建',
+                    handler:onButtonClick,
+                    iconCls:'newIcon'
+                },
+                {
+                    text:'打开',
+                    handler:onButtonClick,
+                    iconCls:'openIcon'
+                },
+                {
+                    text:'保存',
+                    handler:onButtonClick,
+                    iconCls:'saveIcon'
+                }
+            ]);
+            function onButtonClick(btn) {
+                alert(btn.text);
+            };
+
+            var toolbar1=new Ext.toolbar.Toolbar({
+                renderTo:'toolbar1',
+                width:500
+            });
+            toolbar1.add([
+                {text:"新建"},
+                {text:"打开"},
+                {text:"编辑"},
+                {text:"保存"},
+                '_',
+                {
+                    xtype:"textfield",
+                    hideLabel:true,
+                    width:150,
+                },
+                '->',
+                '<a href="#">超链接</a>',
+                {xtype:"tbspacer",width:50},
+                '静态文本'
+            ]);
+        })
+    </script>
+</head>
+<body>
+    <div id="toolbar"></div>
+    <div id="toolbar1"></div>
+</body>
+</html>
